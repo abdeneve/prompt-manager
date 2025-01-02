@@ -6,13 +6,12 @@ function Breadcrumbs({ className }) {
     const { setSelectedCategory, setSelectedPrompt, setSelectedCommand } = useAppContext();
     let breadcrumbItems = [];
 
-    if (!selectedCategory) {
+    if(!selectedCategory && !selectedPrompt && !selectedCommand) {
         breadcrumbItems.push({
-            name: "Seleccione una categoría",
+            name: "Todos",
             onClick: () => {
-                return null
             }
-        })
+        });
     }
 
     if (selectedCategory) {
@@ -55,7 +54,7 @@ function Breadcrumbs({ className }) {
 
     return (
         <nav className={className}>
-            <ol className="flex space-x-2">
+            <ol className="flex space-x-1">
                 {
                     breadcrumbItems.map((item, index) => {
                         return (

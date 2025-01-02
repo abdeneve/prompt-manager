@@ -21,7 +21,17 @@ function PromptDetailView({ prompt }) {
         <span className="font-medium">Referencia Video:</span> <a href={prompt.Url_video_reference}>{prompt.Url_video_reference}</a>
       </p>
       <div className="flex items-center mb-4 space-x-2">
-        <Button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-gray-800">Volver</Button>
+        <Button 
+          onClick={handleGoBack} 
+          className="
+          bg-gray-300 
+          hover:bg-gray-400 
+          text-gray-800
+          rounded-full
+          "
+        >
+            Volver
+        </Button>
         <AddCommandButton prompt={prompt} />
       </div>
       <CommandList prompt={prompt} />

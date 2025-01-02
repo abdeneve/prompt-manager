@@ -25,7 +25,7 @@ function CategoryList() {
         className={`p-2 rounded cursor-pointer hover:bg-gray-200 flex justify-between`}>
         <div>
           <h3 className={`font-medium text-gray-700 pl-5`}>
-            Todas
+            Todos
           </h3>
         </div>
       </li>
