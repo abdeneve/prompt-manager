@@ -42,6 +42,7 @@ function Searchbar({ className }) {
     };
   }, [menuRef]);
 
+  // Ícono de usuario por si no hay foto
   const UserIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 2200" className="w-full h-full">
       <path d="M1940 1100c0 49.84-4.34 98.66-12.66 146.11C1858.19 1640.38 1514.08 1940 1100 1940c-12.72 0-25.37-.28-37.95-.84C615.74 1919.31 260 1551.2 260 1100c0-463.92 376.08-840 840-840s840 376.08 840 840z" fill="#1176ff" />
@@ -51,18 +52,20 @@ function Searchbar({ className }) {
   );
 
   return (
-    <div className={`${className} flex items-center justify-between`}>
-      {!selectedPrompt && (
-        <input
-          type="text"
-          placeholder="Buscar..."
-          className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
-          onChange={handleSearchChange}
-        />
-      )}
+    <div className={`${className} flex items-center w-full gap-2`}>
+      <div className="flex-1">
+        {!selectedPrompt && (
+          <input
+            type="text"
+            placeholder="Buscar..."
+            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300 rounded-full"
+            onChange={handleSearchChange}
+          />
+        )}
+      </div>
 
       {user && (
-        <div className="relative ml-2" ref={menuRef}>
+        <div className="relative" ref={menuRef}>
           <button onClick={toggleMenu} className="rounded-full overflow-hidden border-0 border-gray-300 hover:border-blue-500 focus:outline-none">
             {userPhoto ? <img src={userPhoto} alt="User profile" style={{ width: '30px', height: '30px' }} /> : <div className="w-[32px] h-[32px] rounded-full"><UserIcon /></div>}
           </button>
@@ -72,8 +75,19 @@ function Searchbar({ className }) {
                 {userPhoto ? <img src={userPhoto} alt="User profile" style={{ width: '80px', height: '80px', borderRadius: '50%' }} /> : <div className="w-[80px] h-[80px] bg-gray-400 rounded-full"><UserIcon /></div>}
                 <p className="mt-2 font-bold">{user?.email}</p>
               </div>
-              <Button className="block w-full text-center py-2 px-4 bg-gray-300 hover:bg-gray-400 text-gray-800"
+              <Button 
                 onClick={handleLogout}
+                className="
+                w-full
+                py-2
+                mb-4
+                bg-blue-600
+                hover:bg-blue-700
+                transition-colors
+                text-white
+                font-semibold
+                rounded-full
+                "
               >
                 Cerrar Sesión
               </Button>

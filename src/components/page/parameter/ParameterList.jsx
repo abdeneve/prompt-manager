@@ -26,7 +26,7 @@ function ParameterList({ command }) {
     return (
         <div>
             <div className="flex items-center mb-4 space-x-2">
-                <Button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-gray-800">Volver</Button>
+                <Button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-full">Volver</Button>
                 {userRole === "admin" && (
                     <AddParameterButton command={command} />
                 )}
@@ -61,7 +61,16 @@ function ParameterList({ command }) {
                     </p> 
                 </div>
                 <div className="mt-4">
-                    <Button onClick={handleCopyToClipboard} className="text-gray-600 hover:text-gray-900">
+                    <Button 
+                        onClick={handleCopyToClipboard} 
+                        className="
+                        text-gray-600 
+                        hover:bg-blue-700
+                        transition-colors
+                        text-white
+                        font-semibold
+                        rounded-full"
+                    >
                         Copiar
                     </Button>
                 </div>
