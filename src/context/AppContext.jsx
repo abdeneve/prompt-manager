@@ -30,11 +30,15 @@ export const AppProvider = ({ children }) => {
   };
 
   const getCommandsByPrompt = (promptId) => {
-    return commands.filter(command => command.PromptId === promptId)
+    return commands
+      .filter(command => command.PromptId === promptId)
+      .sort((a, b) => a.Sequence - b.Sequence);
   };
 
   const getParametersByCommand = (commandId) => {
-    return parameters.filter(parameter => parameter.CommandId === commandId)
+    return parameters
+      .filter(parameter => parameter.CommandId === commandId)
+      .sort((a, b) => a.Sequence - b.Sequence);
   }
 
   const setSelectedCategoryById = (categoryId) => {

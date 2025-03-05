@@ -10,13 +10,13 @@ function CommandList({ prompt }) {
             <thead className="bg-gray-50">
                 <tr>
                     <th scope="col" className="w-10 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[90px] min-w-[80px] max-w-[150px] flex-1">
-                        Secuencia
+                    Sequência
                     </th>
                     <th scope="col" className="w-20 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[120px] min-w-[100px] max-w-[150px] flex-1">
-                        Nombre
+                    Nome
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[600px] min-w-[200px] max-w-[600px]">
-                        Prompt
+                    Prompt
                     </th>
                     <th scope="col" className="relative px-6 py-3">
                     </th>

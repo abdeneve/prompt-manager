@@ -10,9 +10,9 @@ function CommandListItem({ command }) {
 
   const handleCopyToClipboard = (e) => {
     e.stopPropagation();
-    navigator.clipboard.writeText(command.command)
+    navigator.clipboard.writeText(command.Command)
       .then(() => {
-        console.log("Text copied to clipboard:", command.name)
+        console.log("Text copied to clipboard:", command.Name)
       })
       .catch(error => {
         console.error("Failed to copy text:", error)

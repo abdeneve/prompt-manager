@@ -18,7 +18,7 @@ function PromptDetailView({ prompt }) {
         <span className="font-medium">Objetivo:</span> {prompt.Description}
       </p>
       <p className="text-gray-700 mb-4">
-        <span className="font-medium">Referencia Video:</span> <a href={prompt.Url_video_reference}>{prompt.Url_video_reference}</a>
+        <span className="font-medium">Referência de vídeo:</span> <a href={prompt.Url_video_reference}>{prompt.Url_video_reference}</a>
       </p>
       <div className="flex items-center mb-4 space-x-2">
         <Button 
@@ -30,7 +30,7 @@ function PromptDetailView({ prompt }) {
           rounded-full
           "
         >
-            Volver
+        Voltar
         </Button>
         <AddCommandButton prompt={prompt} />
       </div>

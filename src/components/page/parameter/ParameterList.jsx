@@ -26,7 +26,7 @@ function ParameterList({ command }) {
     return (
         <div>
             <div className="flex items-center mb-4 space-x-2">
-                <Button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-full">Volver</Button>
+                <Button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-full">Voltar</Button>
                 {userRole === "admin" && (
                     <AddParameterButton command={command} />
                 )}
@@ -35,13 +35,13 @@ function ParameterList({ command }) {
                 <thead>
                     <tr>
                         <th scope="col" className="w-10 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Número
+                        Número
                         </th>
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[150px] max-w-[200px] w-[150px]">
-                            Parametro
+                        Parâmetro
                         </th>
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider flex-1">
-                            Valor
+                        Valor
                         </th>
                         <th scope="col" className="relative px-6 py-3">
                         </th>

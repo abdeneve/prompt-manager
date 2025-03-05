@@ -18,7 +18,7 @@ function Layout() {
     <>
       {user ? (
         <div className="flex h-screen">
-          <Sidebar className="w-64 bg-gray-100 p-4" />
+          <Sidebar className="w-80 bg-gray-100 p-4" />
           <div className="flex-1 flex flex-col">
             <Searchbar className="p-4"/>
             <Breadcrumbs className="p-4"/>

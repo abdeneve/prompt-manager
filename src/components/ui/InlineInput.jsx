@@ -13,7 +13,7 @@ function InlineInput({ value, onSave }) {
     };
 
     const handleBlur = () => {
-        handleCancel()
+        handleSave()
     }
 
     const handleKeyDown = (e) => {

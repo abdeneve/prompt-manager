@@ -29,26 +29,34 @@ function ParameterItem({ parameter }) {
       return;
     }
 
-    const relevantParameters = parameters.filter(
-      (param) => param.CommandId === selectedCommand.CommandId
-    );
+    // Usar el comando actual como base, no el original
+    let commandToUpdate = selectedCommand.Command;
+    
+    // Buscar el valor actual del parámetro (si existe) o usar el nombre del parámetro
+    const currentValue = parameter.Value || parameter.Name;
+    
+    // Escapar caracteres especiales en el valor actual para la expresión regular
+    const escapedCurrentValue = currentValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    
+    // Crear una expresión regular con el valor actual escapado y el modificador global
+    const regex = new RegExp(escapedCurrentValue, 'g');
+    
+    // Reemplazar todas las ocurrencias del valor actual con el nuevo valor
+    commandToUpdate = commandToUpdate.replace(regex, value);
 
+    // Crear el comando actualizado
+    const updatedSelectedCommand = {
+      ...selectedCommand,
+      Command: commandToUpdate
+    };
+    
+    // Actualizar todos los comandos
     const updatedCommands = originalCommands.map((cmd) => {
       if (cmd.CommandId !== selectedCommand.CommandId) {
         return cmd;
       }
-  
-      let commandToUpdate = cmd.Command;
-      relevantParameters.forEach((param) => {
-        commandToUpdate = commandToUpdate.replace(param.Name, value);
-      });
-  
-      return { ...cmd, Command: commandToUpdate };
+      return updatedSelectedCommand;
     });
-
-    const updatedSelectedCommand = updatedCommands.find(
-      (cmd) => cmd.CommandId === selectedCommand.CommandId
-    );
 
     setSelectedCommand(updatedSelectedCommand);
     setCommands(updatedCommands);
