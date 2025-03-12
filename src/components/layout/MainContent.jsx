@@ -9,23 +9,29 @@ function MainContent({ className }) {
 
   if (selectedCommand) {
     return (
-      <div className={className}>
-        <ParameterList command={selectedCommand} />
+      <div className={`${className} w-full`}>
+        <div className="max-w-full overflow-x-auto">
+          <ParameterList command={selectedCommand} />
+        </div>
       </div>
     );
   }
 
   if (selectedPrompt) {
     return (
-      <div className={className}>
-        <PromptDetailView prompt={selectedPrompt} />
+      <div className={`${className} w-full`}>
+        <div className="max-w-full overflow-x-auto">
+          <PromptDetailView prompt={selectedPrompt} />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className={className}>
-      <CategoryView />
+    <div className={`${className} w-full`}>
+      <div className="max-w-full overflow-x-auto">
+        <CategoryView />
+      </div>
     </div>
   );
 }

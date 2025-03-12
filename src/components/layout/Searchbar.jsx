@@ -87,12 +87,15 @@ function Searchbar({ className }) {
             {userPhoto ? <img src={userPhoto} alt="User profile" style={{ width: '32px', height: '32px' }} /> : <div className="w-[32px] h-[32px] rounded-full"><UserIcon /></div>}
           </button>
           {isMenuOpen && (
-            <div className="absolute right-0 mt-2 p-4 w-[436px] bg-white border rounded shadow-lg z-10"  >
+            <div className="absolute right-0 mt-2 p-4 w-full sm:w-80 md:w-96 lg:w-[436px] bg-white border rounded shadow-lg z-10">
               <div className="flex flex-col items-center p-4">
-                {userPhoto ? <img src={userPhoto} alt="User profile" style={{ width: '80px', height: '80px', borderRadius: '50%' }} /> : <div className="w-[80px] h-[80px] rounded-full"><UserIcon /></div>}
-                <p className="mt-2 font-bold">{user?.email}</p>
+                {userPhoto ?
+                  <img src={userPhoto} alt="User profile" className="w-16 h-16 md:w-20 md:h-20 rounded-full" /> :
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full"><UserIcon /></div>
+                }
+                <p className="mt-2 font-bold text-sm md:text-base truncate max-w-full">{user?.email}</p>
               </div>
-              <Button 
+              <Button
                 onClick={handleLogout}
                 className="
                 w-full

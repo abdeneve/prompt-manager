@@ -10,10 +10,15 @@ function Register({setShowRegister}) {
     const handleRegister = async () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-             setShowRegister(false);
+            setShowRegister(false);
             // Redireccionar al usuario a la página principal o hacer alguna acción adicional
         } catch (error) {
-            setError(error.message);
+            // Personalizar mensajes de error
+            if (error.code === 'auth/email-already-in-use') {
+                setError('Este correo electrónico ya está registrado. Por favor, utiliza otro correo o inicia sesión.');
+            } else {
+                setError(error.message);
+            }
         }
     };
 
@@ -30,7 +35,7 @@ function Register({setShowRegister}) {
             text-white
             "
         >
-            <h2 className="text-2xl text-[#E6E6FA] font-bold mb-6 text-center">Registrar</h2>
+            <h2 className="text-xl sm:text-2xl text-[#E6E6FA] font-bold mb-4 sm:mb-6 text-center">Registrar</h2>
 
             {/* Email */}
             <div className="mb-4">
