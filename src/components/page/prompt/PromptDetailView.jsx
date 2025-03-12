@@ -21,11 +21,11 @@ function PromptDetailView({ prompt }) {
         <span className="font-medium">Referência de vídeo:</span> <a href={prompt.Url_video_reference}>{prompt.Url_video_reference}</a>
       </p>
       <div className="flex items-center mb-4 space-x-2">
-        <Button 
-          onClick={handleGoBack} 
+        <Button
+          onClick={handleGoBack}
           className="
-          bg-gray-300 
-          hover:bg-gray-400 
+          bg-gray-300
+          hover:bg-gray-400
           text-gray-800
           rounded-full
           "
@@ -34,7 +34,7 @@ function PromptDetailView({ prompt }) {
         </Button>
         <AddCommandButton prompt={prompt} />
       </div>
-      <CommandList prompt={prompt} />
+      <CommandList />
     </div>
   )
 }
