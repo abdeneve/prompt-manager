@@ -2,9 +2,9 @@ import React from 'react';
 import { useAppContext } from '../../../context/AppContext';
 import CommandListItem from './CommandListItem';
 
-function CommandList({ prompt }) {
-    const { getCommandsByPrompt } = useAppContext();
-    const commands = getCommandsByPrompt(prompt.PromptId)
+function CommandList() {
+    const { commands } = useAppContext();
+    
     return (
         <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">

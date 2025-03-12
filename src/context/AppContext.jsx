@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import auth from '../firebase';
-import { loadData } from '../hooks/useData';
+import { loadData, loadCommandsByPromptId } from '../hooks/useData';
 
 const AppContext = createContext();
 
@@ -50,12 +50,23 @@ export const AppProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setUserPhoto(user?.photoURL || null)
-      loadData(setCategories, setPrompts, setCommands, setOriginalCommands, setParameters);
+      loadData(setCategories, setPrompts, setParameters);
       setIsLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
+
+  // Cargar commands cuando cambie el selectedPrompt
+  useEffect(() => {
+    if (selectedPrompt) {
+      loadCommandsByPromptId(selectedPrompt.PromptId, setCommands, setOriginalCommands);
+    } else {
+      // Si no hay prompt seleccionado, limpiar los commands
+      setCommands([]);
+      setOriginalCommands([]);
+    }
+  }, [selectedPrompt]);
 
   useEffect(() => {
     let filteredPrompts = prompts;
