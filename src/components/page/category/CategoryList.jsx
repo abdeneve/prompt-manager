@@ -5,7 +5,8 @@ import { useAppContext } from '../../../context/AppContext';
 
 function CategoryList() {
   const { 
-    categories, 
+    categories,
+    selectedCategory, 
     setSelectedCategory, 
     setSelectedPrompt, 
     setSelectedCommand, 
@@ -19,13 +20,15 @@ function CategoryList() {
     setSearchTerm('');
   }
 
+  const isAll = selectedCategory === null;
+
   return (
     <ul className="space-y-2">
       <li onClick={handleClearSelectedCategory}
-        className={`p-2 rounded cursor-pointer hover:bg-gray-200 flex justify-between`}>
+        className={`p-2 rounded cursor-pointer hover:bg-gray-200 flex justify-between ${isAll ? 'bg-blue-200' : ''}`}>
         <div>
-          <h3 className={`font-medium text-gray-700 pl-5`}>
-            Todos
+          <h3 className={`font-medium text-gray-700 ${isAll ? 'text-blue-900' : ''} pl-5`}>
+            ✅ Todos
           </h3>
         </div>
       </li>

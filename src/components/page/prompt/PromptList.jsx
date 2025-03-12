@@ -21,9 +21,13 @@ function PromptList() {
                     </th>
                 </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-                {promptsToRender?.map((prompt) => (
-                    <PromptListItem prompt={prompt} key={prompt.id} />
+            <tbody className="divide-y divide-gray-200">
+                {promptsToRender?.map((prompt, index) => (
+                    <PromptListItem
+                        prompt={prompt}
+                        key={prompt.id}
+                        className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                    />
                 ))}
             </tbody>
         </table>
