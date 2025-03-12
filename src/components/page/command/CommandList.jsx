@@ -1,24 +1,25 @@
 import React from 'react';
 import { useAppContext } from '../../../context/AppContext';
 import CommandListItem from './CommandListItem';
+import Table from '../../ui/Table';
 
 function CommandList() {
     const { commands } = useAppContext();
     
     return (
-        <table className="min-w-full divide-y divide-gray-200">
+        <Table>
             <thead className="bg-gray-50">
                 <tr>
-                    <th scope="col" className="w-10 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[90px] min-w-[80px] max-w-[150px] flex-1">
-                    Sequência
+                    <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[15%]">
+                        Sequência
                     </th>
-                    <th scope="col" className="w-20 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[120px] min-w-[100px] max-w-[150px] flex-1">
-                    Nome
+                    <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[20%]">
+                        Nome
                     </th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-[600px] min-w-[200px] max-w-[600px]">
-                    Prompt
+                    <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[55%]">
+                        Prompt
                     </th>
-                    <th scope="col" className="relative px-6 py-3">
+                    <th scope="col" className="relative px-2 sm:px-4 py-2 sm:py-3 w-[10%]">
                     </th>
                 </tr>
             </thead>
@@ -27,7 +28,7 @@ function CommandList() {
                     <CommandListItem key={command.CommandId} command={command} />
                 ))}
             </tbody>
-        </table>
+        </Table>
     )
 }
 export default CommandList;

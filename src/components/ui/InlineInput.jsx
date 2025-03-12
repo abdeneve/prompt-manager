@@ -32,7 +32,7 @@ function InlineInput({ value, onSave }) {
             onKeyDown={handleKeyDown}
             onBlur={handleBlur}
             ref={inputRef}
-            className={"border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring focus:border-blue-300 min-w-[200px] max-w-[300px] w-[200px]"}
+            className={"border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring focus:border-blue-300 w-full min-w-[100px] sm:min-w-[150px] md:min-w-[200px] max-w-full sm:max-w-[300px]"}
         />
     )
 }

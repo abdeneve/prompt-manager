@@ -3,6 +3,7 @@ import ParameterItem from './ParameterItem';
 import AddParameterButton from './AddParameterButton';
 import { useAppContext } from '../../../context/AppContext';
 import Button from '../../ui/Button';
+import Table from '../../ui/Table';
 
 function ParameterList({ command }) {
     const { userRole, getParametersByCommand, setSelectedCommand } = useAppContext();
@@ -24,47 +25,53 @@ function ParameterList({ command }) {
      }
 
     return (
-        <div>
-            <div className="flex items-center mb-4 space-x-2">
+        <div className="w-full">
+            <div className="flex flex-wrap items-center mb-4 gap-2">
                 <Button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-full">Voltar</Button>
                 {userRole === "admin" && (
                     <AddParameterButton command={command} />
                 )}
             </div>
-            <table className="min-w-full divide-y divide-gray-200">
-                <thead>
-                    <tr>
-                        <th scope="col" className="w-10 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Número
-                        </th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[150px] max-w-[200px] w-[150px]">
-                        Parâmetro
-                        </th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider flex-1">
-                        Valor
-                        </th>
-                        <th scope="col" className="relative px-6 py-3">
-                        </th>
-                    </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                    {parameters.map(parameter => (
-                        <ParameterItem key={parameter.id} parameter={parameter} />
-                    ))}
-                </tbody>
-            </table>
-            <div className="mt-8 text-gray-700">
+            
+            <div className="mb-6">
+                <Table>
+                    <thead>
+                        <tr>
+                            <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[15%]">
+                                Número
+                            </th>
+                            <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[25%]">
+                                Parâmetro
+                            </th>
+                            <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[50%]">
+                                Valor
+                            </th>
+                            <th scope="col" className="relative px-2 sm:px-4 py-2 sm:py-3 w-[10%]">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                        {parameters.map(parameter => (
+                            <ParameterItem key={parameter.id} parameter={parameter} />
+                        ))}
+                    </tbody>
+                </Table>
+            </div>
+            
+            <div className="mt-6 text-gray-700">
                 <div className="mt-4">
-                    <h2 className="font-semibold">Prompt:</h2>
-                    <p className="max-w-[800px]">
-                        {command.Command}
-                    </p> 
+                    <h2 className="font-semibold text-base sm:text-lg">Prompt:</h2>
+                    <div className="mt-2 p-3 bg-gray-50 rounded-md overflow-x-auto">
+                        <p className="text-sm sm:text-base break-words whitespace-pre-wrap">
+                            {command.Command}
+                        </p>
+                    </div>
                 </div>
                 <div className="mt-4">
-                    <Button 
-                        onClick={handleCopyToClipboard} 
+                    <Button
+                        onClick={handleCopyToClipboard}
                         className="
-                        text-gray-600 
+                        bg-blue-500
                         hover:bg-blue-700
                         transition-colors
                         text-white

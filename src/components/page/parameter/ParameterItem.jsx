@@ -64,25 +64,25 @@ function ParameterItem({ parameter }) {
 
   return (
     <tr>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{ parameter.Sequence }</div>
+      <td className="px-2 sm:px-4 py-2 sm:py-4">
+        <div className="text-xs sm:text-sm text-gray-900">{ parameter.Sequence }</div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-        { parameter.Name }
+      <td className="px-2 sm:px-4 py-2 sm:py-4 text-xs sm:text-sm font-medium text-gray-900">
+        <div className="truncate">{ parameter.Name }</div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      <td className="px-2 sm:px-4 py-2 sm:py-4 text-xs sm:text-sm text-gray-500">
         <InlineInput value={parameter.Value} onSave={updateParameterValue} />
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+      <td className="px-2 sm:px-4 py-2 sm:py-4 text-right text-xs sm:text-sm font-medium">
         {userRole === "admin" && (
-          <>
+          <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3">
             <a href="#" className="text-indigo-600 hover:text-indigo-900">
               Editar
             </a>
-            <a href="#" className="text-red-600 hover:text-red-900 ml-4">
+            <a href="#" className="text-red-600 hover:text-red-900">
               Eliminar
             </a>
-          </>
+          </div>
         )}
       </td>
     </tr>

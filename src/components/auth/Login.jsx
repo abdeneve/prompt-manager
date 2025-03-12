@@ -45,7 +45,7 @@ function Login() {
                         text-white
                         "
                     >
-                        <h2 className="text-2xl text-[#E6E6FA] font-bold mb-6 text-center">Login</h2>
+                        <h2 className="text-xl sm:text-2xl text-[#E6E6FA] font-bold mb-4 sm:mb-6 text-center">Login</h2>
 
                         {/* Email */}
                         <div className="mb-4">

@@ -12,15 +12,23 @@ function PromptDetailView({ prompt }) {
     setSelectedCommand(null);
   }
   return (
-    <div>
-      <h2 className="text-2xl font-semibold mb-4">{prompt.Objective}</h2>
-      <p className="text-gray-700 mb-2">
+    <div className="w-full">
+      <h2 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4 break-words">{prompt.Objective}</h2>
+      <p className="text-gray-700 mb-2 text-sm sm:text-base">
         <span className="font-medium">Objetivo:</span> {prompt.Description}
       </p>
-      <p className="text-gray-700 mb-4">
-        <span className="font-medium">Referência de vídeo:</span> <a href={prompt.Url_video_reference}>{prompt.Url_video_reference}</a>
+      <p className="text-gray-700 mb-4 text-sm sm:text-base">
+        <span className="font-medium">Referência de vídeo:</span>
+        <a
+          href={prompt.Url_video_reference}
+          className="break-all hover:text-blue-600 transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {prompt.Url_video_reference}
+        </a>
       </p>
-      <div className="flex items-center mb-4 space-x-2">
+      <div className="flex flex-wrap items-center mb-4 gap-2">
         <Button
           onClick={handleGoBack}
           className="
@@ -34,7 +42,9 @@ function PromptDetailView({ prompt }) {
         </Button>
         <AddCommandButton prompt={prompt} />
       </div>
-      <CommandList />
+      <div className="overflow-x-auto w-full">
+        <CommandList />
+      </div>
     </div>
   )
 }

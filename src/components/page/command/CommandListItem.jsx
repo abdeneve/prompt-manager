@@ -21,29 +21,37 @@ function CommandListItem({ command }) {
 
   return (
     <tr onClick={handleSelect} className={"cursor-pointer hover:bg-gray-100"}>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{command.Sequence}</div>
+      <td className="px-2 sm:px-4 py-2 sm:py-4">
+        <div className="text-xs sm:text-sm text-gray-900">{command.Sequence}</div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{command.Name}</div>
+      <td className="px-2 sm:px-4 py-2 sm:py-4">
+        <div className="text-xs sm:text-sm text-gray-900 truncate">{command.Name}</div>
       </td>
-      <td className="px-6 py-4 text-sm text-gray-500 w-[600px] min-w-[200px] max-w-[600px] break-words">
-        {command.Command}
+      <td className="px-2 sm:px-4 py-2 sm:py-4 text-xs sm:text-sm text-gray-500">
+        <div className="break-words line-clamp-2 sm:line-clamp-3">
+          {command.Command}
+        </div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
-        <a href="#" onClick={handleCopyToClipboard} className="text-gray-600 hover:text-gray-900">
-          Copiar
-        </a>
-        {userRole === "admin" && (
-          <>
-            <a href="#" className="text-indigo-600 hover:text-indigo-900 ml-4">
-              Editar
-            </a>
-            <a href="#" className="text-red-600 hover:text-red-900 ml-4">
-              Eliminar
-            </a>
-          </>
-        )}
+      <td className="px-2 sm:px-4 py-2 sm:py-4 text-left text-xs sm:text-sm font-medium">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+          <a
+            href="#"
+            onClick={handleCopyToClipboard}
+            className="text-gray-600 hover:text-gray-900"
+          >
+            Copiar
+          </a>
+          {userRole === "admin" && (
+            <>
+              <a href="#" className="text-indigo-600 hover:text-indigo-900 hidden sm:inline">
+                Editar
+              </a>
+              <a href="#" className="text-red-600 hover:text-red-900 hidden sm:inline">
+                Eliminar
+              </a>
+            </>
+          )}
+        </div>
       </td>
     </tr>
   )
