@@ -9,9 +9,7 @@ export default defineConfig(({mode}) => {
     return {
       plugins: [react()],
       build: {
-        rollupOptions: {
-          input: './src/main.jsx',
-        },
+        // Using Vite's default entry point settings
       },
       css: {
         postcss: {

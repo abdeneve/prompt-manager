@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppContext } from '../../../context/AppContext';
 
-function PromptListItem({ prompt }) {
+function PromptListItem({ prompt, className = "" }) {
   const { 
     userRole,
     selectedCategory, 
@@ -19,7 +19,7 @@ function PromptListItem({ prompt }) {
   }
 
   return (
-    <tr onClick={handleSelect} className="cursor-pointer hover:bg-gray-100">
+    <tr onClick={handleSelect} className={`cursor-pointer hover:bg-gray-100 ${className}`}>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-500">{prompt.Objective}</div>
       </td>

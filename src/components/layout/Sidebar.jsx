@@ -6,9 +6,10 @@ function Sidebar({className}) {
     return (
       <aside className={className}>
         <AddCategoryButton />
-        <div className="flex justify-start mb-4">
-          <h1 className="text-2xl font-semibold text-gray-800">Gerenciador de prompts</h1>
+        <div className="flex justify-start mb-4 ">
+          <h1 className="text-2xl font-bold text-gray-800">Gerenciador de prompts</h1>
         </div>
+        <hr className="mb-4" />
         <h2 className="font-semibold text-gray-700 mb-4">Categorias</h2>
         <CategoryList />
       </aside>
