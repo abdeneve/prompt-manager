@@ -35,14 +35,14 @@ function Layout() {
           <div
             className={`fixed md:static inset-y-0 left-0 transform ${
               sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-            } md:translate-x-0 transition duration-300 ease-in-out z-50 md:z-0 w-64 md:w-72 lg:w-80 bg-gray-100 overflow-y-auto`}
+            } md:translate-x-0 transition duration-300 ease-in-out z-50 md:z-0 w-80 md:w-88 lg:w-96 bg-gray-100 overflow-y-auto`}
           >
             <Sidebar className="p-4" toggleSidebar={toggleSidebar} />
           </div>
           
           {/* Contenido principal */}
-          <div className="flex-1 flex flex-col w-full md:w-auto">
-            <div className="flex items-center p-4">
+          <div className="flex-1 flex flex-col w-full md:flex-1 overflow-x-hidden">
+            <div className="flex items-center p-4 w-full">
               <button
                 className="mr-2 md:hidden text-gray-600 focus:outline-none"
                 onClick={toggleSidebar}
@@ -54,8 +54,8 @@ function Layout() {
               </button>
               <Searchbar className="flex-1" />
             </div>
-            <Breadcrumbs className="px-4 py-2"/>
-            <MainContent className="p-4 flex-1 overflow-y-auto" />
+            <Breadcrumbs className="px-4 py-2 w-full"/>
+            <MainContent className="p-4 flex-1 overflow-y-auto w-full" />
           </div>
         </div>
       ) : (
