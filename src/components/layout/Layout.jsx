@@ -37,7 +37,7 @@ function Layout() {
               sidebarOpen ? 'translate-x-0' : '-translate-x-full'
             } md:translate-x-0 transition duration-300 ease-in-out z-50 md:z-0 w-64 md:w-72 lg:w-80 bg-gray-100 overflow-y-auto`}
           >
-            <Sidebar className="p-4" />
+            <Sidebar className="p-4" toggleSidebar={toggleSidebar} />
           </div>
           
           {/* Contenido principal */}
