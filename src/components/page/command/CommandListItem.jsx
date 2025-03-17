@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppContext } from '../../../context/AppContext';
 
-function CommandListItem({ command }) {
+function CommandListItem({ command, className = "" }) {
   const { userRole, setSelectedCommand } = useAppContext();
 
   const handleSelect = () => {
@@ -20,7 +20,7 @@ function CommandListItem({ command }) {
   }
 
   return (
-    <tr onClick={handleSelect} className={"cursor-pointer hover:bg-gray-100"}>
+    <tr onClick={handleSelect} className={`cursor-pointer hover:bg-gray-100 ${className}`}>
       <td className="px-2 sm:px-4 py-2 sm:py-4">
         <div className="text-xs sm:text-sm text-gray-900">{command.Sequence}</div>
       </td>

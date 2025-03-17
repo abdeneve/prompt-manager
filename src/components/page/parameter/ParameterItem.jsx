@@ -2,7 +2,7 @@ import React from 'react';
 import InlineInput from '../../ui/InlineInput';
 import { useAppContext } from '../../../context/AppContext';
 
-function ParameterItem({ parameter }) {
+function ParameterItem({ parameter, className = "" }) {
   const { 
     userRole, 
     originalCommands, 
@@ -63,7 +63,7 @@ function ParameterItem({ parameter }) {
   }
 
   return (
-    <tr>
+    <tr className={`hover:bg-gray-100 ${className}`}>
       <td className="px-2 sm:px-4 py-2 sm:py-4">
         <div className="text-xs sm:text-sm text-gray-900">{ parameter.Sequence }</div>
       </td>
