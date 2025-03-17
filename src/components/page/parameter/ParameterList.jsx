@@ -37,13 +37,13 @@ function ParameterList({ command }) {
                 <Table>
                     <thead>
                         <tr>
-                            <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[15%]">
-                                Número
+                            <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[5%]">
+                                #
                             </th>
                             <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[25%]">
                                 Parâmetro
                             </th>
-                            <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[50%]">
+                            <th scope="col" className="px-2 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-[60%]">
                                 Valor
                             </th>
                             <th scope="col" className="relative px-2 sm:px-4 py-2 sm:py-3 w-[10%]">
@@ -51,8 +51,12 @@ function ParameterList({ command }) {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        {parameters.map(parameter => (
-                            <ParameterItem key={parameter.id} parameter={parameter} />
+                        {parameters.map((parameter, index) => (
+                            <ParameterItem 
+                                key={parameter.id} 
+                                parameter={parameter} 
+                                className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                            />
                         ))}
                     </tbody>
                 </Table>

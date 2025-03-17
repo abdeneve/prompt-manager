@@ -36,7 +36,7 @@ export const loadCommandsByPromptId = async (promptId, setCommands, setOriginalC
     
     // Guardar en estados
     setCommands(orderedCommands);
-    setOriginalorderedCommands(commands);
+    setOriginalCommands(commands);
   } catch (error) {
     console.error('Error fetching commands from Airtable:', error);
   }
