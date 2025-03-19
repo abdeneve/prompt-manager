@@ -1,10 +1,12 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { useAppContext } from '../../../context/AppContext';
 import PromptListItem from './PromptListItem';
 import Table from '../../ui/Table';
 
 function PromptList() {
-    const { searchResults } = useAppContext();
+    const { isLoading, searchResults } = useAppContext();
 
     const promptsToRender = searchResults.prompts;
 
@@ -24,7 +26,19 @@ function PromptList() {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                    {promptsToRender?.map((prompt, index) => (
+                    {isLoading ? (
+                        <tr>
+                            <td>
+                                <Skeleton count={11} height={30} className="mb-2" />
+                            </td>
+                            <td>
+                                <Skeleton count={11} height={30} className="mb-2" />
+                            </td>
+                            <td>
+                                <Skeleton count={11} height={30} className="mb-2" />
+                            </td>
+                        </tr>
+                    ) : promptsToRender?.map((prompt, index) => (
                         <PromptListItem
                             prompt={prompt}
                             key={prompt.id}

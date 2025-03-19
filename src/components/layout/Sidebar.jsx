@@ -1,8 +1,13 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import CategoryList from '../page/category/CategoryList';
 import AddCategoryButton from '../page/category/AddCategoryButton';
+import { useAppContext } from '../../context/AppContext';
 
 function Sidebar({className, toggleSidebar}) {
+    const { isLoading } = useAppContext();
+    
     return (
       <aside className={`${className} overflow-x-hidden`}>
         <div className="flex justify-between items-center mb-4">
@@ -22,7 +27,7 @@ function Sidebar({className, toggleSidebar}) {
         <hr className="mb-4" />
         <h2 className="font-semibold text-gray-700 mb-4">Categorias</h2>
         <div className="w-full max-w-full">
-          <CategoryList />
+          { isLoading ? (<Skeleton count={12} height={30} className="mb-2" />) : <CategoryList /> }
         </div>
       </aside>
     );
