@@ -8,6 +8,7 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
+  const [isAutenticated, setIsAutenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [userPhoto, setUserPhoto] = useState(null);
@@ -50,8 +51,13 @@ export const AppProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setUserPhoto(user?.photoURL || null)
+      setIsAutenticated(!!user);
+
+      setIsLoading(true);
       loadData(setCategories, setPrompts, setParameters);
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
     });
 
     return () => unsubscribe();
@@ -94,6 +100,8 @@ export const AppProvider = ({ children }) => {
       value={{
         isLoading,
         setIsLoading,
+        isAutenticated,
+        setIsAutenticated,
         user,
         userPhoto,
         userRole,
