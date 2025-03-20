@@ -8,8 +8,11 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
-  const [isAutenticated, setIsAutenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [showCategorySkeleton, setShowCategorySkeleton] = useState(true);
+  const [showPromptSkeleton, setShowPromptSkeleton] = useState(true);
+  const [showCommandSkeleton, setShowCommandSkeleton] = useState(true);
+  const [showParameterSkeleton, setShowParameterSkeleton] = useState(true);
   const [user, setUser] = useState(null);
   const [userPhoto, setUserPhoto] = useState(null);
   const [userRole, setUserRole] = useState("user");
@@ -51,13 +54,15 @@ export const AppProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setUserPhoto(user?.photoURL || null)
-      setIsAutenticated(!!user);
+      setIsLoading(false);
 
-      setIsLoading(true);
-      loadData(setCategories, setPrompts, setParameters);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 300);
+      loadData( 
+        setShowCategorySkeleton, 
+        setShowPromptSkeleton,
+        setShowParameterSkeleton,
+        setCategories, 
+        setPrompts, 
+        setParameters);
     });
 
     return () => unsubscribe();
@@ -66,7 +71,7 @@ export const AppProvider = ({ children }) => {
   // Cargar commands cuando cambie el selectedPrompt
   useEffect(() => {
     if (selectedPrompt) {
-      loadCommandsByPromptId(selectedPrompt.PromptId, setCommands, setOriginalCommands);
+      loadCommandsByPromptId(selectedPrompt.PromptId, setShowCommandSkeleton, setCommands, setOriginalCommands);
     } else {
       // Si no hay prompt seleccionado, limpiar los commands
       setCommands([]);
@@ -100,8 +105,12 @@ export const AppProvider = ({ children }) => {
       value={{
         isLoading,
         setIsLoading,
-        isAutenticated,
-        setIsAutenticated,
+        showCategorySkeleton, 
+        setShowCategorySkeleton,
+        showPromptSkeleton, 
+        setShowPromptSkeleton,
+        showCommandSkeleton, 
+        setShowCommandSkeleton,
         user,
         userPhoto,
         userRole,

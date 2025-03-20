@@ -1,10 +1,12 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { useAppContext } from '../../../context/AppContext';
 import CommandListItem from './CommandListItem';
 import Table from '../../ui/Table';
 
 function CommandList() {
-    const { commands } = useAppContext();
+    const { showCommandSkeleton, commands } = useAppContext();
     
     return (
         <Table>
@@ -24,13 +26,29 @@ function CommandList() {
                 </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-                {commands.map((command, index) => (
-                    <CommandListItem 
+                {showCommandSkeleton ? (
+                        <tr>
+                            <td>
+                                <Skeleton count={7} height={30} className="mb-2" />
+                            </td>
+                            <td>
+                                <Skeleton count={7} height={30} className="mb-2" />
+                            </td>
+                            <td>
+                                <Skeleton count={7} height={30} className="mb-2" />
+                            </td>
+                            <td>
+                                <Skeleton count={7} height={30} className="mb-2" />
+                            </td>
+                        </tr>
+                    ) : commands?.map((command, index) => (
+                        <CommandListItem 
                         key={command.CommandId} 
                         command={command} 
                         className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
                     />
                 ))}
+                
             </tbody>
         </Table>
     )

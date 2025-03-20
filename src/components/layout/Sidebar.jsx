@@ -6,7 +6,7 @@ import AddCategoryButton from '../page/category/AddCategoryButton';
 import { useAppContext } from '../../context/AppContext';
 
 function Sidebar({className, toggleSidebar}) {
-    const { isLoading } = useAppContext();
+    const { showCategorySkeleton } = useAppContext();
     
     return (
       <aside className={`${className} overflow-x-hidden`}>
@@ -27,7 +27,7 @@ function Sidebar({className, toggleSidebar}) {
         <hr className="mb-4" />
         <h2 className="font-semibold text-gray-700 mb-4">Categorias</h2>
         <div className="w-full max-w-full">
-          { isLoading ? (<Skeleton count={12} height={30} className="mb-2" />) : <CategoryList /> }
+          { showCategorySkeleton ? (<Skeleton count={12} height={30} className="mb-2" />) : <CategoryList /> }
         </div>
       </aside>
     );
