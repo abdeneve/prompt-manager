@@ -6,7 +6,7 @@ import PromptListItem from './PromptListItem';
 import Table from '../../ui/Table';
 
 function PromptList() {
-    const { isLoading, searchResults } = useAppContext();
+    const { showPromptSkeleton, searchResults } = useAppContext();
 
     const promptsToRender = searchResults.prompts;
 
@@ -26,7 +26,7 @@ function PromptList() {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                    {isLoading ? (
+                    {showPromptSkeleton ? (
                         <tr>
                             <td>
                                 <Skeleton count={11} height={30} className="mb-2" />

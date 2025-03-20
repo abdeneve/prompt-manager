@@ -28,39 +28,44 @@ const fetchData = async (tableId, promptId=null) => {
 };
 
 // Función para cargar commands por PromptId
-export const loadCommandsByPromptId = async (promptId, setCommands, setOriginalCommands) => {
+export const loadCommandsByPromptId = async (promptId, setShowCommandSkeleton, setCommands, setOriginalCommands) => {
   try {
     // Obtener commands por promptId
+    setShowCommandSkeleton(true);
     const commands = await fetchData(airtableConfig.commandsTableId, promptId);
     const orderedCommands = commands.sort((a, b) => a.Sequence - b.Sequence);
-    
-    // Guardar en estados
     setCommands(orderedCommands);
     setOriginalCommands(commands);
+    setShowCommandSkeleton(false);
   } catch (error) {
     console.error('Error fetching commands from Airtable:', error);
   }
 };
 
-export const loadData = async (setCategories, setPrompts, setParameters) => {
+export const loadData = async ( 
+  setShowCategorySkeleton, 
+  setShowPromptSkeleton,
+  setShowParameterSkeleton,
+  setCategories, 
+  setPrompts, 
+  setParameters) => {
   try {
-    // Llamadas en paralelo con Promise.all
-    const [categories, prompts, parameters] = await Promise.all([
-      fetchData(airtableConfig.categoriesTableId),
-      fetchData(airtableConfig.promptsTableId),
-      fetchData(airtableConfig.parametersTableId),
-    ]);
-
-    // Ordenar categorías por CategoryId
+    setShowCategorySkeleton(true);
+    const categories = await fetchData(airtableConfig.categoriesTableId);
     categories.sort((a, b) => a.CategoryId - b.CategoryId);
-
-    // Ordenar prompts por PromptId
-    prompts.sort((a, b) => a.PromptId - b.PromptId);
-
-    // Guardar en estados
     setCategories(categories);
+    setShowCategorySkeleton(false);
+
+    setShowPromptSkeleton(true);
+    const prompts = await fetchData(airtableConfig.promptsTableId);
+    prompts.sort((a, b) => a.PromptId - b.PromptId);
     setPrompts(prompts);
+    setShowPromptSkeleton(false);
+
+    setShowParameterSkeleton(true);
+    const parameters = await fetchData(airtableConfig.parametersTableId);
     setParameters(parameters);
+    setShowParameterSkeleton(false);
   } catch (error) {
     console.error('Error fetching data from Airtable:', error);
   }

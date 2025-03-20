@@ -8,14 +8,14 @@ import Breadcrumbs from './Breadcrumbs';
 import Searchbar from './Searchbar';
 
 function Layout() {
-  const { user, isAutenticated } = useAppContext();
+  const { user, isLoading } = useAppContext();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  if (isAutenticated === false) {
+  if (isLoading) {
     return <Loading />;
   }
 
