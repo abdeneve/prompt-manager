@@ -46,7 +46,7 @@ function PromptList() {
                             Objetivo
                         </th>
                         <th scope="col" className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider w-2/3">
-                            Descrição
+                            Descripción
                         </th>
                         <th scope="col" className="relative px-3 sm:px-6 py-2 sm:py-3 w-10">
                         </th>
