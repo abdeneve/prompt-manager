@@ -4,8 +4,13 @@ import Modal from '../../ui/Modal';
 import Input from '../../ui/Input';
 import { useAppContext } from '../../../context/AppContext';
 
-function AddPromptButton({ category }) {
-    const { userRole, prompts, setPrompts } = useAppContext();
+function AddPromptButton() {
+    const {
+        userRole,
+        prompts,
+        setPrompts,
+        selectedCategory
+    } = useAppContext();
     const [isOpen, setIsOpen] = useState(false);
     const [newPromptSlug, setNewPromptSlug] = useState("");
     const [newPromptObjective, setNewPromptObjective] = useState("");
@@ -20,13 +25,18 @@ function AddPromptButton({ category }) {
     }
 
     const handleSave = () => {
+        if (!selectedCategory) {
+            return;
+        }
+
         const newPrompt = {
             id: prompts.length + 1,
-            category_id: category.id,
-            slug: newPromptSlug,
-            objective: newPromptObjective,
-            url_video_reference: newPromptVideoRef
-        }
+            CategoryId: selectedCategory.CategoryId,
+            PromptId: prompts.length + 1,
+            Objective: newPromptSlug,
+            Description: newPromptObjective,
+            Url_video_reference: newPromptVideoRef
+        };
         
         setPrompts([...prompts, newPrompt]);
         setIsOpen(false);

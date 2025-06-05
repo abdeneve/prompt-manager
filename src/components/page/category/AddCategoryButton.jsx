@@ -22,9 +22,10 @@ function AddCategoryButton() {
     const handleSave = () => {
         const newCategory = {
             id: categories.length + 1,
-            name: newCategoryName,
-            description: newCategoryDescription
-        }
+            CategoryId: categories.length + 1,
+            Name: newCategoryName,
+            Description: newCategoryDescription
+        };
         setCategories([...categories, newCategory]);
         setIsOpen(false);
         setNewCategoryName("");

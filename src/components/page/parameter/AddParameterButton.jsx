@@ -17,12 +17,15 @@ function AddParameterButton({command}) {
         setIsOpen(false)
     }
     const handleSave = () => {
+      const nextSequence = parameters.filter(p => p.CommandId === command.CommandId).length + 1;
       const newParameter = {
           id: parameters.length + 1,
-          command_id: command.id,
-          parameter_name: newParameterName,
-          parameter_value: newParameterValue
-      }
+          ParameterId: parameters.length + 1,
+          CommandId: command.CommandId,
+          Name: newParameterName,
+          Value: newParameterValue,
+          Sequence: nextSequence
+      };
       setParameters([...parameters, newParameter]);
         setIsOpen(false);
         setNewParameterName("");
