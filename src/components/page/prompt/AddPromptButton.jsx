@@ -20,13 +20,18 @@ function AddPromptButton() {
     }
 
     const handleSave = () => {
+        if (!selectedCategory) {
+            return;
+        }
+
         const newPrompt = {
             id: prompts.length + 1,
             CategoryId: selectedCategory.CategoryId,
-            slug: newPromptSlug,
-            objective: newPromptObjective,
-            url_video_reference: newPromptVideoRef
-        }
+            PromptId: prompts.length + 1,
+            Objective: newPromptSlug,
+            Description: newPromptObjective,
+            Url_video_reference: newPromptVideoRef
+        };
         
         setPrompts([...prompts, newPrompt]);
         setIsOpen(false);

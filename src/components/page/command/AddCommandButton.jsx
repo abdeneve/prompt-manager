@@ -18,11 +18,15 @@ function AddCommandButton({ prompt }) {
     }
 
     const handleSave = () => {
+        const nextSequence = commands.filter(c => c.PromptId === prompt.PromptId).length + 1;
         const newCommand = {
             id: commands.length + 1,
-            prompt_id: prompt.id,
-            command_name: newCommandName,
-        }
+            CommandId: commands.length + 1,
+            PromptId: prompt.PromptId,
+            Name: newCommandName,
+            Command: '',
+            Sequence: nextSequence
+        };
         setCommands([...commands, newCommand]);
         setIsOpen(false);
         setNewCommandName("");
