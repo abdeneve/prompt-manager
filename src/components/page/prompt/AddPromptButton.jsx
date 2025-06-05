@@ -4,8 +4,8 @@ import Modal from '../../ui/Modal';
 import Input from '../../ui/Input';
 import { useAppContext } from '../../../context/AppContext';
 
-function AddPromptButton({ category }) {
-    const { userRole, prompts, setPrompts } = useAppContext();
+function AddPromptButton() {
+    const { userRole, prompts, setPrompts, selectedCategory } = useAppContext();
     const [isOpen, setIsOpen] = useState(false);
     const [newPromptSlug, setNewPromptSlug] = useState("");
     const [newPromptObjective, setNewPromptObjective] = useState("");
@@ -22,7 +22,7 @@ function AddPromptButton({ category }) {
     const handleSave = () => {
         const newPrompt = {
             id: prompts.length + 1,
-            category_id: category.id,
+            CategoryId: selectedCategory.CategoryId,
             slug: newPromptSlug,
             objective: newPromptObjective,
             url_video_reference: newPromptVideoRef
@@ -35,7 +35,7 @@ function AddPromptButton({ category }) {
         setNewPromptVideoRef("");
     }
 
-    if (userRole !== "admin") {
+    if (userRole !== "admin" || !selectedCategory) {
         return null
     }
 
