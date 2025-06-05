@@ -5,12 +5,7 @@ import Input from '../../ui/Input';
 import { useAppContext } from '../../../context/AppContext';
 
 function AddPromptButton() {
-    const {
-        userRole,
-        prompts,
-        setPrompts,
-        selectedCategory
-    } = useAppContext();
+    const { userRole, prompts, setPrompts, selectedCategory } = useAppContext();
     const [isOpen, setIsOpen] = useState(false);
     const [newPromptSlug, setNewPromptSlug] = useState("");
     const [newPromptObjective, setNewPromptObjective] = useState("");
@@ -45,7 +40,7 @@ function AddPromptButton() {
         setNewPromptVideoRef("");
     }
 
-    if (userRole !== "admin") {
+    if (userRole !== "admin" || !selectedCategory) {
         return null
     }
 
